@@ -45,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if(collision.gameObject.tag == "Theme"){
+            Debug.Log("Theme Changed");
+        }
+
     }
 }
 
