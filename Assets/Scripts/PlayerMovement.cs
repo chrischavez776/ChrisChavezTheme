@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5;
+    public GameManager gm;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,4 +22,25 @@ public class PlayerMovement : MonoBehaviour
         //transform.Translate(0,0,0); this moves an object the given amount of units
         //transform.position = new Vector3(0,0,0); this moves an object to the position on the grid
     }
+
+
+    /* 
+    private void OnCollisionEnter2D(Collision2D collision){
+        Debug.Log("Collided");
+    } 
+    */
+
+    private void OnTriggerEnter2D(Collider2D collision){
+
+        if(collision.gameObject.tag == "Coin"){
+            gm.IncrementScore(1);
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Hazard"){
+            Destroy(gameObject);
+        }
+
+    }
 }
+
